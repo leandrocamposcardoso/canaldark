@@ -1,0 +1,205 @@
+[
+    {
+        "label": "KeyManager",
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "isExtraImport": true,
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "ModelManager",
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "isExtraImport": true,
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "KeyManager",
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "isExtraImport": true,
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "ModelManager",
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "isExtraImport": true,
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIAPI",
+        "importPath": "api.openai_api",
+        "description": "api.openai_api",
+        "isExtraImport": true,
+        "detail": "api.openai_api",
+        "documentation": {}
+    },
+    {
+        "label": "DeepSeekAPI",
+        "importPath": "api.deepseek_api",
+        "description": "api.deepseek_api",
+        "isExtraImport": true,
+        "detail": "api.deepseek_api",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "configparser",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "configparser",
+        "description": "configparser",
+        "detail": "configparser",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "PromptRequest",
+        "importPath": "models.prompt",
+        "description": "models.prompt",
+        "isExtraImport": true,
+        "detail": "models.prompt",
+        "documentation": {}
+    },
+    {
+        "label": "ContentGeneratorAPI",
+        "importPath": "generators.content_generator",
+        "description": "generators.content_generator",
+        "isExtraImport": true,
+        "detail": "generators.content_generator",
+        "documentation": {}
+    },
+    {
+        "label": "run",
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "isExtraImport": true,
+        "detail": "uvicorn",
+        "documentation": {}
+    },
+    {
+        "label": "DeepSeekAPI",
+        "kind": 6,
+        "importPath": "api.deepseek_api",
+        "description": "api.deepseek_api",
+        "peekOfCode": "class DeepSeekAPI:\n    def __init__(self):\n        self.key_manager = KeyManager(\"DeepSeek\")\n        self.model_manager = ModelManager(\"DeepSeek\")\n    def generate_text(self, prompt: str, style: str, model: str):\n        key = self.key_manager.get_key()\n        model = self.model_manager.validate_model(style)\n        client = OpenAI(api_key=\"<DeepSeek API Key>\", base_url=\"https://api.deepseek.com\")\n        response = client.completions.create(\n            model=model,",
+        "detail": "api.deepseek_api",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAIAPI",
+        "kind": 6,
+        "importPath": "api.openai_api",
+        "description": "api.openai_api",
+        "peekOfCode": "class OpenAIAPI:\n    def __init__(self):\n        self.key_manager = KeyManager(\"OpenAI\")\n        self.model_manager = ModelManager(\"OpenAI\")\n    def generate_text(self, prompt: str, style: str, model: str):\n        key = self.key_manager.get_key()\n        model = self.model_manager.validate_model(style)\n        client = OpenAI(api_key=key)\n        try:\n            response = client.completions.create(",
+        "detail": "api.openai_api",
+        "documentation": {}
+    },
+    {
+        "label": "ContentGeneratorAPI",
+        "kind": 6,
+        "importPath": "generators.content_generator",
+        "description": "generators.content_generator",
+        "peekOfCode": "class ContentGeneratorAPI:\n    def __init__(self):\n        self.current_api = \"gpt\"\n        self.current_style = \"cartomante\"\n        self.openai_api = OpenAIAPI()\n        self.deepseek_api = DeepSeekAPI()\n    def set_ia(self, ia: str):\n        if ia in {\"gpt\", \"deepseek\"}:\n            self.current_api = ia\n    def set_style(self, style: str):",
+        "detail": "generators.content_generator",
+        "documentation": {}
+    },
+    {
+        "label": "PromptRequest",
+        "kind": 6,
+        "importPath": "models.prompt",
+        "description": "models.prompt",
+        "peekOfCode": "class PromptRequest(BaseModel):\n    prompt: str\n    model: str\n    style: str",
+        "detail": "models.prompt",
+        "documentation": {}
+    },
+    {
+        "label": "load_config",
+        "kind": 2,
+        "importPath": "utils.config_loader",
+        "description": "utils.config_loader",
+        "peekOfCode": "def load_config():\n    config = configparser.ConfigParser()\n    config.read('config.ini')\n    return config",
+        "detail": "utils.config_loader",
+        "documentation": {}
+    },
+    {
+        "label": "KeyManager",
+        "kind": 6,
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "peekOfCode": "class KeyManager():\n    \"\"\"docstring for KeyManager.\"\"\"\n    def __init__(self, service: str):\n        config = load_config()\n        self.keys = config.get(service, \"keys\").split(\",\")\n    def get_key(self):\n        return random.choice(self.keys)\nclass ModelManager():\n    \"\"\"docstring for ModelManager.\"\"\"\n    def __init__(self, service: str):",
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "ModelManager",
+        "kind": 6,
+        "importPath": "utils.manager",
+        "description": "utils.manager",
+        "peekOfCode": "class ModelManager():\n    \"\"\"docstring for ModelManager.\"\"\"\n    def __init__(self, service: str):\n        config = load_config()\n        self.models = config.get(service, \"models\").split(\",\")\n    def get_models(self):\n        return self.models\n    def validate_model(self, model: str):\n        return model if model in self.models else self.models[0]",
+        "detail": "utils.manager",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\ncontet_generator = ContentGeneratorAPI()\n@app.post(\"/generate_script\")\nasync def generate_script(prompt_request: PromptRequest):\n    roteiro = contet_generator.generate_text(prompt_request.prompt, prompt_request.style, prompt_request.model)\n    return {\"roteiro\": roteiro}\n@app.post(\"/set_ia/{ia}\")\nasync def set_ia(ia: str):\n    contet_generator.set_ia(ia)\n    return {\"ia\": ia}",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "contet_generator",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "contet_generator = ContentGeneratorAPI()\n@app.post(\"/generate_script\")\nasync def generate_script(prompt_request: PromptRequest):\n    roteiro = contet_generator.generate_text(prompt_request.prompt, prompt_request.style, prompt_request.model)\n    return {\"roteiro\": roteiro}\n@app.post(\"/set_ia/{ia}\")\nasync def set_ia(ia: str):\n    contet_generator.set_ia(ia)\n    return {\"ia\": ia}\n@app.post(\"/set_style/{style}\")",
+        "detail": "main",
+        "documentation": {}
+    }
+]
